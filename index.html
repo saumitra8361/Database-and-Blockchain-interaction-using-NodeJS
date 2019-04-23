@@ -1,0 +1,45 @@
+<html>
+   <body>
+
+      <h2>Get User Records from Blockchain</h2>
+      <form action = "http://127.0.0.1:3000/getUserInfo" method = "GET">
+         UserID: <input type = "number" name = "id"> <br>
+         <input type = "submit" value = "Get">
+      </form>
+
+      <h2>Add User Records into Blockchain</h2>
+      <form action = "http://127.0.0.1:3000/addDemographyInfo" method = "GET">
+         UserID: <input type = "number" name = "id"> <br>
+         UserName: <input type = "text" name = "name"> <br>
+         Date of Birth: <input type="text" name="dob"> <br>
+         Gender: <input type="text" name="gender"> <br>
+         Place of Birth: <input type="text" name="pob"> <br>
+         Ethnicity: <input type="text" name="ethnicity"> <br>
+         Phone Number: <input type="text" name="phoneNumber"> <br>
+         Mailing Address: <input type="text" name="address"> <br>
+         Email ID: <input type="text" name="emailId"> <br>
+         <input type = "submit" value = "Set">
+      </form>
+
+      <h2>Update User Records into Blockchain</h2>
+      <form action = "http://127.0.0.1:3000/updateDemographyInfo" method = "GET">
+         UserID: <input type = "number" name = "id"> <br>
+         UserName: <input type = "text" name = "name"> <br>
+         Date of Birth: <input type="text" name="dob"> <br>
+         Gender: <input type="text" name="gender"> <br>
+         Place of Birth: <input type="text" name="pob"> <br>
+         Ethnicity: <input type="text" name="ethnicity"> <br>
+         Phone Number: <input type="text" name="phoneNumber"> <br>
+         Mailing Address: <input type="text" name="address"> <br>
+         Email ID: <input type="text" name="emailId"> <br>
+         <input type = "submit" value = "Set">
+      </form>
+
+      <h2>Delete User Records from Blockchain</h2>
+      <form action = "http://127.0.0.1:3000/deleteDemographyInfo" method = "GET">
+         UserID: <input type = "number" name = "id"> <br>
+         <input type = "submit" value = "Get">
+      </form>
+
+   </body>
+</html>
