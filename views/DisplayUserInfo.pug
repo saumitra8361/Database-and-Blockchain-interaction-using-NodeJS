@@ -3,14 +3,22 @@ html(lang='en')
  head
    title User Info
  body
-   h1 User Information
+   h2 User Information
+   h3 User Information Fetched from Blockchain
    div.container
      p UserID: #{id}
-     p Name: #{name}
+     p Data Hash: #{blockHash}
+   h3 User Information Fetched from Database
+   div.container
+     p UserID: #{id}
+     p User Name: #{name}
      p Date of Birth: #{dob}
      p Gender: #{gender}
      p Place of Birth: #{pob}
      p Ethnicity: #{ethnicity}
-     p Phone Number: #{phnNumber}
+     p Phone Number: #{phoneNumber}
      p Address: #{address}
-     p Email ID: #{emailId}
+     p EmailId: #{emailId}
+   h3 Was Data Modified?
+   div.container
+     p Result: #{hashCompareResult}
