@@ -237,7 +237,7 @@ app.get('/addDemographyInfo', async function (req, res) {
   });
 })
 
-app.get('/deleteDemographyInfo', async function (req, res) {
+app.get('/deleteDemographyInfo', async function (req, res, next) {
 
   const accounts = await web3js.eth.getAccounts();
   this.account = accounts[0];
@@ -245,12 +245,29 @@ app.get('/deleteDemographyInfo', async function (req, res) {
 
   var userid = req.query.id;
 
-  console.log('Initiating Data Delete transaction... (please wait)');
+  console.dir('Initiating Data Delete transaction... (please wait)');
 
-  const { deleteUser } = contract.methods;
+  sql.connect(dbConfig, function (err) {
+    new sql.Request().input("param", sql.Int, userid).query("delete from GANADB.[dbo].[User_Demographic_Data] where UserID = @param").then(async function (error) {
 
-  await deleteUser(userid).send({from: this.account, gas:60000});
-  console.log('Data Delete Transaction complete!');
+      if (error) {
+        console.dir('User record not deleted'+error);
+        res.send('User record not deleted'+error);
+        return next();
+      }
+
+      //deleting user demographic info
+      const { deleteUser } = contract.methods;
+      await deleteUser(userid).send({from: this.account, gas:60000});
+      console.dir('Data Delete Transaction complete!');
+
+      sql.close();
+
+    }).catch(function (error) {
+      console.dir(error);
+    });
+  });
+
 })
 
 app.get('/updateDemographyInfo', async function (req, res) {
